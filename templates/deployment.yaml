@@ -14,10 +14,13 @@ spec:
       {{- include "ror.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+        {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- end }}
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: {{ .Values.containerPort | quote }}
       labels:
         {{- include "ror.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
@@ -50,7 +53,7 @@ spec:
             {{- include "ror.env" .Values | nindent 12 }}
           ports:
             - name: http
-              containerPort: 3000 # {{ .Values.service.port }}
+              containerPort: {{ .Values.containerPort }}
               protocol: TCP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
