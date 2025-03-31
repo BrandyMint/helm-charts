@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  ror:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-03-31T16:38:11.133424+03:00"
+    description: A Helm chart for Kubernetes
+    digest: 4b73a9a4e479758e4becd4f7e1581c7f7f80697806df9bf14f2029a53eb02b17
+    name: ror
+    type: application
+    urls:
+    - ror-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-03-31T16:38:11.133467+03:00"
