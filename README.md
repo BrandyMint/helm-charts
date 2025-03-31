@@ -1,1 +1,2 @@
-# Ruby On Rails application helm charts
+# BrandyMint official HELM Charts
+
