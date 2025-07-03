@@ -6,7 +6,7 @@ deps:
 	brew install chart-releaser
 
 package:
-	cr package ror
+	cr package charts/ror
 
 upload:
 	cr upload --owner ${OWNER} --git-repo ${REPO} --packages-with-index --token ${TOKEN} --push --skip-existing
