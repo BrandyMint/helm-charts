@@ -1,5 +1,7 @@
 # BrandyMint official's HELM Charts
 
+[![Release Charts](https://github.com/BrandyMint/helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/BrandyMint/helm-charts/actions/workflows/release.yml)
+
 Этот репозиторий содержит типовой helm-chart для Ruby On Rails приложений используемых в
 BrandyMint
 
@@ -12,6 +14,4 @@ helm install MyApp brandymint/ror
 
 # Изменения и публикация чартов
 
-Для публикации в виде чарта изменений достаточно выпустить новый релиз.
-
-[![Release Charts](https://github.com/BrandyMint/helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/BrandyMint/helm-charts/actions/workflows/release.yml)
+Для публикации в виде чарта изменений достаточно выпустить новый релиз - https://github.com/BrandyMint/helm-charts/releases/new
