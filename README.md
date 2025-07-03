@@ -7,7 +7,7 @@ helm repo add brandymint https://brandymint.github.io/helm-charts/
 helm install MyApp brandymint/ror
 ```
 
-Available values - https://github.com/BrandyMint/helm-charts/blob/master/charts/ror/values.yaml
+For options see - https://github.com/BrandyMint/helm-charts/blob/master/charts/ror/values.yaml
 
 ## Source
 
