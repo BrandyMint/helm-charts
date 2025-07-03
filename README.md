@@ -15,6 +15,6 @@ helm install MyApp brandymint/ror
 # Изменения и публикация чартов
 
 1. Изменить версию чарта в ./charts/ror/Chart.yaml
-2. make package upload
-
-Для публикации в виде чарта изменений достаточно выпустить новый релиз - https://github.com/BrandyMint/helm-charts/releases/new
+2. git commit, push
+3. make package.
+4. Релиз через CI
