@@ -183,12 +183,18 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
+  - name: rails-tmp
+    emptyDir:
+      medium: Memory
   - name: tmp
     emptyDir:
       medium: Memory
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
+  - name: rails-tmp
+    mountPath: /rails/tmp
+    readOnly: false
   - name: tmp
     mountPath: /tmp
     readOnly: false
