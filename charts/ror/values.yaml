@@ -105,6 +105,8 @@ readinessProbe:
   failureThreshold: 3
   periodSeconds: 3
 
+minReadySeconds: 30
+
 strategy:
   type: RollingUpdate
   rollingUpdate:
