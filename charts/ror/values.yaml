@@ -32,6 +32,26 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+# RBAC configuration for applications that need K8s API access
+# This creates Role and RoleBinding resources in the same namespace
+rbac:
+  # Specifies whether RBAC resources should be created
+  create: false
+  # Rules for the Role
+  rules: []
+    # Example: Grant access to manage Ingress resources
+    # - apiGroups: ["networking.k8s.io"]
+    #   resources: ["ingresses"]
+    #   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+    # Example: Read-only access to Certificates
+    # - apiGroups: ["cert-manager.io"]
+    #   resources: ["certificates"]
+    #   verbs: ["get", "list", "watch"]
+    # Example: Read-only access to Secrets
+    # - apiGroups: [""]
+    #   resources: ["secrets"]
+    #   verbs: ["get", "list", "watch"]
+
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 podAnnotations: {}
