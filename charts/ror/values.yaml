@@ -179,6 +179,12 @@ jobsProcessing:
 #   mountPath: "/etc/foo"
 #   readOnly: true
 
+# Additional env vars specific to job-processing (overrides envMap values)
+  envMap: {}
+# Example:
+#   JOB_CONCURRENCY: "1"
+#   DATABASE_POOL_SIZE: "18"
+
 env:
   - name: HOST_IP
     valueFrom:

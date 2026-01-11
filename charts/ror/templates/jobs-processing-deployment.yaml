@@ -40,8 +40,13 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: {{ toYaml .Values.jobsProcessing.command | nindent 12 }}
-          env: 
+          env:
             {{- include "ror.env" .Values | nindent 12 }}
+            {{- /* Additional env vars specific to job-processing */ -}}
+            {{- range $key, $value := .Values.jobsProcessing.envMap }}
+            - name: {{ $key | quote }}
+              value: {{ $value | quote }}
+            {{- end }}
           {{/*ports:*/}}
             {{/*- name: http*/}}
               {{/*containerPort: 3000 # {{ .Values.service.port }}*/}}
