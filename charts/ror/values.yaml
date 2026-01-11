@@ -246,6 +246,15 @@ tolerations: []
 
 affinity: {}
 
+# PodDisruptionBudget configuration
+# Protects against voluntary disruptions (kubectl drain, cluster upgrades)
+# More info: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
+podDisruptionBudget:
+  enabled: false
+  # maxUnavailable: 1  # Maximum number of pods that can be unavailable
+  # minAvailable: 1    # Minimum number of pods that must be available
+  # Use either maxUnavailable OR minAvailable, not both
+
 # ConfigMaps to create and optionally mount as volumes
 # Each configMap creates a ConfigMap resource and can be mounted into pods
 # Example:
