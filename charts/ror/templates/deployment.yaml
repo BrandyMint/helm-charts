@@ -74,12 +74,31 @@ spec:
             {{- with .Values.webServer.volumeMounts }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
+            {{- range $cm := .Values.configMaps }}
+            {{- if $cm.volumeMounts }}
+            {{- range $cm.volumeMounts }}
+            - name: cm-{{ $cm.name }}
+              mountPath: {{ .mountPath }}
+              {{- if .subPath }}
+              subPath: {{ .subPath }}
+              {{- end }}
+              readOnly: {{ .readOnly | default true }}
+            {{- end }}
+            {{- end }}
+            {{- end }}
       volumes:
         {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
         {{- with .Values.webServer.volumes }}
         {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- range $cm := .Values.configMaps }}
+        {{- if $cm.volumeMounts }}
+        - name: cm-{{ $cm.name }}
+          configMap:
+            name: {{ include "ror.fullname" $ }}-{{ $cm.name }}
+        {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

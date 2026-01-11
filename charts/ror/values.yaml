@@ -226,3 +226,18 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# ConfigMaps to create and optionally mount as volumes
+# Each configMap creates a ConfigMap resource and can be mounted into pods
+# Example:
+# configMaps:
+#   - name: robots
+#     data:
+#       robots.txt: |
+#         User-agent: *
+#         Allow: /
+#     volumeMounts:
+#       - mountPath: /rails/public/robots.txt
+#         subPath: robots.txt
+#         readOnly: true
+configMaps: []
