@@ -135,7 +135,7 @@ strategy:
 
 containerPort: 3000
 
-initContainer: 
+initContainer:
   name: migrations
   props:
     workingDir: /rails
@@ -145,6 +145,18 @@ initContainer:
       #- "sh"
       #- "-c"
       #- "/bin/rails db:migrate"
+
+# Extra init containers to run before the main container
+# Useful for copying data files, waiting for dependencies, etc.
+# Example: GeoIP database init container
+# extraInitContainers:
+#   - name: geoip-init
+#     image: cr.selcloud.ru/brandymint/geoip-data:1.0.0
+#     command: ["cp", "/usr/share/GeoIP/GeoLiteCity.dat", "/data/GeoLiteCity.dat"]
+#     volumeMounts:
+#       - name: geoip-data
+#         mountPath: /data
+extraInitContainers: []
 
 webServer:
   volumes: []
