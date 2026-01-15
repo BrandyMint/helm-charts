@@ -110,20 +110,28 @@ resources: {}
      #memory: 64Mi
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+# Startup probe checks when a container application has started. It disables liveness and readiness checks until it succeeds.
+# failureThreshold × periodSeconds = максимальное время на старт (60 × 2 = 120 сек)
+startupProbe:
+  httpGet:
+    path: /up
+    port: http
+  failureThreshold: 60
+  periodSeconds: 2
 livenessProbe:
   httpGet:
     path: /up
     port: http
-  periodSeconds: 3
-  initialDelaySeconds: 15
+  periodSeconds: 10
+  initialDelaySeconds: 0  # startupProbe блокирует до готовности
   failureThreshold: 3
 readinessProbe:
   httpGet:
     path: /up
     port: http
-  initialDelaySeconds: 15
+  initialDelaySeconds: 0  # startupProbe блокирует до готовности
   failureThreshold: 3
-  periodSeconds: 3
+  periodSeconds: 5
 
 minReadySeconds: 30
 
