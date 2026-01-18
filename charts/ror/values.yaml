@@ -295,3 +295,23 @@ podDisruptionBudget:
 #         subPath: robots.txt
 #         readOnly: true
 configMaps: []
+
+# Secrets to create for the application
+# Each secret creates a Kubernetes Secret resource
+# Values are automatically base64 encoded unless prefixed with "base64:"
+# Example:
+# secrets:
+#   - name: myapp
+#     data:
+#       DATABASE_PASSWORD: "secretpassword"
+#       API_KEY: "my-api-key"
+#   - name: myapp-files
+#     data:
+#       # For file contents, use readFile and b64enc in gotmpl, prefix with "base64:"
+#       service_account.json: "base64:{{ readFile "path/to/file.json" | b64enc }}"
+#   - name: myapp-tls
+#     type: kubernetes.io/tls
+#     data:
+#       tls.crt: "base64:..."
+#       tls.key: "base64:..."
+secrets: []
