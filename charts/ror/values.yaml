@@ -315,3 +315,22 @@ configMaps: []
 #       tls.crt: "base64:..."
 #       tls.key: "base64:..."
 secrets: []
+
+# Prometheus metrics configuration
+# Requires prometheus_exporter gem in Rails app
+# More info: https://github.com/discourse/prometheus_exporter
+metrics:
+  # Enable metrics collection (creates Service + ServiceMonitor)
+  enabled: false
+  # Port where prometheus_exporter listens
+  port: 9394
+  # Path to metrics endpoint
+  path: /metrics
+  # ServiceMonitor configuration (for Prometheus Operator)
+  serviceMonitor:
+    # Additional labels for ServiceMonitor (e.g., prometheus: kube-prometheus)
+    labels: {}
+    # Scrape interval
+    interval: 30s
+    # Scrape timeout (optional)
+    scrapeTimeout: 10s
