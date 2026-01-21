@@ -266,10 +266,21 @@ volumeMounts:
     mountPath: /tmp
     readOnly: false
 
+# Web server specific pod placement settings
+web:
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Job processing specific pod placement settings
+jobsProcessing:
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Global pod placement settings (fallback if specific not set)
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
 
 # PodDisruptionBudget configuration
