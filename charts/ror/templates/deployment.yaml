@@ -15,6 +15,9 @@ spec:
   {{- if .Values.minReadySeconds }}
   minReadySeconds: {{ .Values.minReadySeconds }}
   {{- end }}
+  {{- if .Values.revisionHistoryLimit }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "ror.selectorLabels" . | nindent 6 }}

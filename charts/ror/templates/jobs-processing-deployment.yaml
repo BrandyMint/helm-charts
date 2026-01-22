@@ -10,6 +10,9 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.jobsProcessing.replicaCount }}
   {{- end }}
+  {{- if .Values.revisionHistoryLimit }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include "ror.selectorLabels" . | nindent 6 }}

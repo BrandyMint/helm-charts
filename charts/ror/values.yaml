@@ -141,6 +141,10 @@ strategy:
     maxSurge: 1
     maxUnavailable: 0
 
+# Number of old ReplicaSets to retain for rollback
+# Lower values reduce clutter, higher values allow more rollback options
+revisionHistoryLimit: 3
+
 containerPort: 3000
 
 initContainer:
