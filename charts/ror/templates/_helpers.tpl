@@ -77,3 +77,22 @@ Generate envs list from Values.env and Values.envMap
   value: {{ $value | quote }}
 {{- end }}
 {{- end }}
+
+{{/*
+Merge two envMap dicts (base + override) and render as env vars.
+Override keys take precedence over base keys, eliminating duplicates.
+Usage: include "ror.mergedEnvMap" (dict "base" .Values.envMap "override" .Values.jobsProcessing.envMap)
+*/}}
+{{- define "ror.mergedEnvMap" -}}
+{{- $merged := dict }}
+{{- range $key, $value := .base }}
+  {{- $_ := set $merged $key $value }}
+{{- end }}
+{{- range $key, $value := .override }}
+  {{- $_ := set $merged $key $value }}
+{{- end }}
+{{- range $key, $value := $merged }}
+- name: {{ $key | quote }}
+  value: {{ $value | quote }}
+{{- end }}
+{{- end }}

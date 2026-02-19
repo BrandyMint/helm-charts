@@ -48,12 +48,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: {{ toYaml .Values.jobsProcessing.command | nindent 12 }}
           env:
-            {{- include "ror.env" .Values | nindent 12 }}
-            {{- /* Additional env vars specific to job-processing */ -}}
-            {{- range $key, $value := .Values.jobsProcessing.envMap }}
-            - name: {{ $key | quote }}
-              value: {{ $value | quote }}
+            {{- with .Values.env }}
+            {{- toYaml . | nindent 12 }}
             {{- end }}
+            {{- include "ror.mergedEnvMap" (dict "base" (.Values.envMap | default dict) "override" (.Values.jobsProcessing.envMap | default dict)) | nindent 12 }}
           {{/*ports:*/}}
             {{/*- name: http*/}}
               {{/*containerPort: 3000 # {{ .Values.service.port }}*/}}
