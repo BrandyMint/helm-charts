@@ -3,6 +3,16 @@ entries:
   ror:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2026-02-19T13:16:11.659550082Z"
+    description: A Helm chart for Kubernetes
+    digest: 76223e1affd38d9b208fb1f52eef5f95bd0a0d83ea7e978af3c7d4c25924195c
+    name: ror
+    type: application
+    urls:
+    - https://github.com/BrandyMint/helm-charts/releases/download/ror-0.11.1/ror-0.11.1.tgz
+    version: 0.11.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2026-01-22T07:24:25.606396969Z"
     description: A Helm chart for Kubernetes
     digest: fb18c0a258bba553238d2a3ec0295eb84e527e8f1ca4b392a395aa49b7d200bd
@@ -181,4 +191,4 @@ entries:
     urls:
     - ror-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-22T07:24:25.606536348Z"
+generated: "2026-02-19T13:16:11.659686164Z"
