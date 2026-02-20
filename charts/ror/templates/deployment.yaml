@@ -126,6 +126,10 @@ spec:
       affinity:
         {{- toYaml .Values.affinity | nindent 8 }}
       {{- end }}
+      {{- with .Values.web.topologySpreadConstraints | default .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if .Values.web.tolerations }}
       tolerations:
         {{- toYaml .Values.web.tolerations | nindent 8 }}
