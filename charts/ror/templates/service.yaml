@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "ror.selectorLabels" . | nindent 4 }}
+    {{- include "ror.webSelectorLabels" . | nindent 4 }}

@@ -55,6 +55,16 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Selector labels for the web workload and Service.
+Keep Deployment selectors unchanged to avoid immutable-selector upgrades,
+but make the web Service target only web pods.
+*/}}
+{{- define "ror.webSelectorLabels" -}}
+{{ include "ror.selectorLabels" . }}
+app.kubernetes.io/component: webserver
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "ror.serviceAccountName" -}}
