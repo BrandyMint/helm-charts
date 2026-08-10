@@ -158,6 +158,20 @@ initContainer:
       #- "-c"
       #- "/bin/rails db:migrate"
 
+# Run database migrations once before an upgrade instead of once per web pod.
+# This is intended for existing installations: a pre-upgrade hook can use the
+# application Secret that is already managed by the release.
+migrationJob:
+  enabled: false
+  command:
+    - /rails/bin/rails
+    - db:migrate
+  workingDir: /rails
+  activeDeadlineSeconds: 900
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600
+  resources: {}
+
 # Extra init containers to run before the main container
 # Useful for copying data files, waiting for dependencies, etc.
 # Example: GeoIP database init container
